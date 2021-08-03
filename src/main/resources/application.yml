@@ -1,0 +1,70 @@
+server:
+  port: 9097
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      
+      - id: hsn-details-service
+        uri: http://localhost:8083/
+        predicates:
+        - Path=/hsn-details/**
+        filters:
+        - RewritePath=/hsn-details/(?<path>.*), /$\{path}
+        - AuthFilter
+        
+      - id: user-management-service
+        uri: http://localhost:8002/
+        predicates:
+        - Path=/user-management/**
+        filters:
+        - RewritePath=/user-management/(?<path>.*), /$\{path}
+        - AuthFilter
+        
+      - id: new-sale-service
+        uri: http://localhost:8082/
+        predicates:
+        - Path=/new-sale/**
+        filters:
+        - RewritePath=/new-sale/(?<path>.*), /$\{path}
+        - AuthFilter
+        
+      - id: openapi
+        uri: http://localhost:${server.port}
+        predicates:
+        - Path=/v3/api-docs/**
+        filters:
+        - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
+eureka:
+  serviceUrl:
+      defaultZone:http//localhost:8761/eureka/
+
+app:
+ setWebEnvironment(false);
+
+
+#####################properties related for aws cognito for authentication provider####################
+
+Cognito:
+     aws: 
+        accesskey: AKIAYZOXA3O4HNGVWCQL
+        secret_access_key: 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 
+        client_id: 2640gqqchl9bhtoaipi09de0nr
+        userpool_id: ap-south-1_W7vTQcho9
+        region: ap-south-1
+        idTokenPoolUrl: https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_W7vTQcho9
+logging:
+   level:
+      org:
+       springframework:
+                security:
+                       web:
+                         FilterChainProxy : debug
+    
+###################################### End #################################################
