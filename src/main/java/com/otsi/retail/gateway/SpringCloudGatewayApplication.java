@@ -1,4 +1,4 @@
-package com.otsi.rpd.springcloudgateway;
+package com.otsi.retail.gateway;
 
 import static com.nimbusds.jose.JWSAlgorithm.RS256;
 
@@ -29,6 +29,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.reactive.config.EnableWebFlux;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -39,12 +40,12 @@ import com.nimbusds.jose.util.DefaultResourceRetriever;
 import com.nimbusds.jose.util.ResourceRetriever;
 import com.nimbusds.jwt.proc.ConfigurableJWTProcessor;
 import com.nimbusds.jwt.proc.DefaultJWTProcessor;
-import com.otsi.rpd.springcloudgateway.authConfiguration.AuthFilter;
+import com.otsi.retail.gateway.authConfiguration.AuthFilter;
 
 @SpringBootApplication
 @EnableEurekaClient
-@CrossOrigin("*")
-
+@EnableAutoConfiguration(exclude = { WebMvcAutoConfiguration.class })
+@EnableWebFlux
 public class SpringCloudGatewayApplication {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringCloudGatewayApplication.class);
 	@Value("${Cognito.aws.region}")

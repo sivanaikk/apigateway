@@ -1,4 +1,4 @@
-package com.otsi.rpd.springcloudgateway.authConfiguration;
+package com.otsi.retail.gateway.authConfiguration;
 
 import java.util.Arrays;
 import java.util.List;
