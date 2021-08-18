@@ -12,6 +12,8 @@ public class RouteValidator {
 
 	public static final List<String> nonSecureRoutes=Arrays.asList(
             "/auth/login",
+            "/auth/signup",
+            "/auth/confirmEmail",
             "/v3/api-docs"
             
     );	

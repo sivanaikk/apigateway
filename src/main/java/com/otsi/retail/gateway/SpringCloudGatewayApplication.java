@@ -29,7 +29,10 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+import org.springframework.web.reactive.config.WebFluxConfigurerComposite;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -77,8 +80,14 @@ public class SpringCloudGatewayApplication {
 	}
 
 	
+	/*
+	 * @Bean public WebFluxConfigurer corsConfigurer() { return new
+	 * WebFluxConfigurerComposite() {
+	 * 
+	 * @Override public void addCorsMappings(CorsRegistry registry) {
+	 * registry.addMapping("/*").allowedOrigins("*") .allowedMethods("*"); } }; }
+	 */
 
-	
 
 	@Bean
 	public List<GroupedOpenApi> apis() {
