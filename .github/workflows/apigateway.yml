@@ -1,4 +1,4 @@
-name: APIGateway-buildtest
+name: apigateway-buildtest
 on:
   push:
     branches:
@@ -56,6 +56,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/APIGateway:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/apigateway:latest
           file: Dockerfile
           #repository: niranjanmaradapu/usermanagement    
