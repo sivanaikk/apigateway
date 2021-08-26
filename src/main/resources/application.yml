@@ -1,6 +1,6 @@
 server:
   port: 9097
-  address: 10.80.2.148
+  
 spring:
   application:
     name: gateway-service
@@ -14,7 +14,7 @@ spring:
           enabled: true
       routes:
       - id: hsn-details-service
-        uri: http://localhost:8083/
+        uri: lb://hsn-details-service
         predicates:
         - Path=/hsn-details/**
         filters:
@@ -22,7 +22,7 @@ spring:
         - AuthFilter
       
       - id: user-management-service
-        uri: http://localhost:8003/
+        uri: lb://user-management-service
         predicates:
         - Path=/user-management/**
         filters:
@@ -30,11 +30,25 @@ spring:
         - AuthFilter
         
       - id: new-sale-service
-        uri: http://localhost:8082/
+        uri: lb://new-sale-service
         predicates:
         - Path=/new-sale/**
         filters:
         - RewritePath=/new-sale/(?<path>.*), /$\{path}
+        
+      - id: tax-master-service
+        uri: lb://tax-master-service
+        predicates:
+        - Path=/tax-master/**
+        filters:
+        - RewritePath=/tax-master/(?<path>.*), /$\{path}
+        
+      - id: user-store-service
+        uri: lb://user-store-service
+        predicates:
+        - Path=/user-store/**
+        filters:
+        - RewritePath=/user-store/(?<path>.*), /$\{path}
        
         
       - id: openapi

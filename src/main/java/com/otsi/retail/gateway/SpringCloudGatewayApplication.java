@@ -18,6 +18,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
@@ -46,7 +47,7 @@ import com.nimbusds.jwt.proc.DefaultJWTProcessor;
 import com.otsi.retail.gateway.authConfiguration.AuthFilter;
 
 @SpringBootApplication
-@EnableEurekaClient
+@EnableDiscoveryClient
 @EnableAutoConfiguration(exclude = { WebMvcAutoConfiguration.class })
 @EnableWebFlux
 public class SpringCloudGatewayApplication {
@@ -97,7 +98,7 @@ public class SpringCloudGatewayApplication {
 		definitions.stream().filter(routeDefinition -> routeDefinition.getId().matches(".*-service"))
 				.forEach(routeDefinition -> {
 					String name = routeDefinition.getId().replaceAll("-service", "");
-					groups.add(GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").setGroup(name).build());
+					groups.add(GroupedOpenApi.builder().pathsToMatch("/" + name + "/**").group(name).build());
 				});
 		return groups;
 	}
