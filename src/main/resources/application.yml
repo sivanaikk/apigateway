@@ -43,13 +43,21 @@ spring:
         filters:
         - RewritePath=/tax-master/(?<path>.*), /$\{path}
         
-      - id: user-store-service
-        uri: lb://user-store-service
+      - id: userStore-mappaing-service
+        uri: lb://userStore-mappaing-service
         predicates:
         - Path=/user-store/**
         filters:
         - RewritePath=/user-store/(?<path>.*), /$\{path}
        
+       
+       
+      - id: customer-management-service
+        uri: http://localhost:8089/
+        predicates:
+        - Path=/customer/**
+        filters:
+        - RewritePath=/user-store/(?<path>.*), /$\{path}
         
       - id: openapi
         uri: http://localhost:${server.port}
