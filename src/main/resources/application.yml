@@ -13,8 +13,22 @@ spring:
         locator:
           enabled: true
       routes:
+      - id: new-sale-service
+        uri: http://localhost:8081
+        predicates:
+        - Path=/new-sale/**
+        filters:
+        - RewritePath=/new-sale/(?<path>.*), /$\{path} 
+      
+      - id: customer-management-service
+        uri: http://localhost:8082
+        predicates:
+        - Path=/customer/**
+        filters:
+        - RewritePath=/user-store/(?<path>.*), /$\{path}
+        
       - id: hsn-details-service
-        uri: lb://hsn-details-service
+        uri: http://localhost:8083
         predicates:
         - Path=/hsn-details/**
         filters:
@@ -22,19 +36,34 @@ spring:
         - AuthFilter
       
       - id: user-management-service
-        uri: lb://user-management-service
+        uri: http://localhost:8084
         predicates:
         - Path=/user-management/**
         filters:
         - RewritePath=/user-management/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: new-sale-service
-        uri: lb://new-sale-service
+      - id: userStore-mappaing-service
+        uri: http://localhost:8085/
         predicates:
-        - Path=/new-sale/**
+        - Path=/user-store/**
         filters:
-        - RewritePath=/new-sale/(?<path>.*), /$\{path}
+        - RewritePath=/user-store/(?<path>.*), /$\{path}
+        
+      - id: paymentgateway-service
+        uri: http://localhost:8086/
+        predicates:
+        - Path=/paymentgateway/**
+        filters:
+        - RewritePath=/paymentgateway/(?<path>.*), /$\{path}
+        
+      - id: promo-exchange-service
+        uri: http://localhost:8087/
+        predicates:
+        - Path=/promo-exchange/**
+        filters:
+        - RewritePath=/promo-exchange/(?<path>.*), /$\{path}
+        
         
       - id: tax-master-service
         uri: lb://tax-master-service
@@ -43,22 +72,7 @@ spring:
         filters:
         - RewritePath=/tax-master/(?<path>.*), /$\{path}
         
-      - id: userStore-mappaing-service
-        uri: lb://userStore-mappaing-service
-        predicates:
-        - Path=/user-store/**
-        filters:
-        - RewritePath=/user-store/(?<path>.*), /$\{path}
        
-       
-       
-      - id: customer-management-service
-        uri: http://localhost:8089/
-        predicates:
-        - Path=/customer/**
-        filters:
-        - RewritePath=/user-store/(?<path>.*), /$\{path}
-        
       - id: openapi
         uri: http://localhost:${server.port}
         predicates:
@@ -69,7 +83,7 @@ spring:
         
 eureka:
   serviceUrl:
-      defaultZone:http//localhost:8761/eureka/
+      defaultZone:http//localhost:8762/eureka/
 
 app:
  setWebEnvironment(false);
