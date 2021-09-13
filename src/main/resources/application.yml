@@ -25,7 +25,7 @@ spring:
         predicates:
         - Path=/customer/**
         filters:
-        - RewritePath=/user-store/(?<path>.*), /$\{path}
+        - RewritePath=/customer/(?<path>.*), /$\{path}
         
       - id: hsn-details-service
         uri: http://localhost:8083
