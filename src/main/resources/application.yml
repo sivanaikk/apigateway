@@ -83,7 +83,7 @@ spring:
         
 eureka:
   serviceUrl:
-      defaultZone:http//localhost:8762/eureka/
+      defaultZone:http//service-registry:8762/eureka/
 
 app:
  setWebEnvironment(false);
