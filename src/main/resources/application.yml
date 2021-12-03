@@ -41,7 +41,7 @@ spring:
         - Path=/user-management/**
         filters:
         - RewritePath=/user-management/(?<path>.*), /$\{path}
-        - AuthFilter
+        
         
       - id: userStore-mappaing-service
         uri: http://localhost:8085/
