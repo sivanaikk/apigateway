@@ -79,11 +79,13 @@ spring:
         - Path=/v3/api-docs/**
         filters:
         - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
-                        
+        
+      
+          
         
 eureka:
   serviceUrl:
-      defaultZone:http//service-registry:8762/eureka/
+      defaultZone:http//10.100.143.45:8762/eureka/
 
 app:
  setWebEnvironment(false);
