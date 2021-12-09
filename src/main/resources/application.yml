@@ -86,9 +86,9 @@ spring:
 eureka:
   register-with-eureka: false
   fetch-registry: false
-  serviceUrl:
+ # serviceUrl:
       
-      defaultZone:http//service-registry:8762/eureka/
+   #   defaultZone:http//service-registry:8762/eureka/
 
 app:
  setWebEnvironment(false);
