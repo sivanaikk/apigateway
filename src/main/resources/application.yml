@@ -9,7 +9,8 @@ spring:
   cloud:
     gateway:
       httpclient:        connect-timeout: 2000
-        response-timeout: 5s
+        
+        response-timeout: 10s
       discovery:
         locator:
           enabled: true
