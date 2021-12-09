@@ -47,7 +47,7 @@ import com.nimbusds.jwt.proc.DefaultJWTProcessor;
 import com.otsi.retail.gateway.authConfiguration.AuthFilter;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EnableAutoConfiguration(exclude = { WebMvcAutoConfiguration.class })
 @EnableWebFlux
 public class SpringCloudGatewayApplication {

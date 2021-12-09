@@ -8,9 +8,9 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
-      httpclient:
-        connect-timeout: 2000
-        response-timeout: 5s
+      httpclient:        connect-timeout: 2000
+        
+        response-timeout: 10s
       discovery:
         locator:
           enabled: true
@@ -81,14 +81,14 @@ spring:
         - Path=/v3/api-docs/**
         filters:
         - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
-          
+                        
         
 eureka:
   register-with-eureka: false
   fetch-registry: false
-  serviceUrl:
+ # serviceUrl:
       
-      defaultZone:http//service-registry:8762/eureka/
+   #   defaultZone:http//service-registry:8762/eureka/
 
 app:
  setWebEnvironment(false);
