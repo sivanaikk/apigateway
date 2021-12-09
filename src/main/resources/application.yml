@@ -8,11 +8,8 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
-      httpclient:        connect-timeout: 1000
+      httpclient:        connect-timeout: 7000
         response-timeout: 7500
-        pool:          type: fixed
-          max-idle-time: 90s
-          max-life-time: 90s
       discovery:
         locator:
           enabled: true
