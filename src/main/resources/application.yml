@@ -8,7 +8,8 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
-      httpclient:        connect-timeout: 2000
+      httpclient:
+        connect-timeout: 2000
         response-timeout: 5s
       discovery:
         locator:
@@ -80,7 +81,7 @@ spring:
         - Path=/v3/api-docs/**
         filters:
         - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
-                        
+          
         
 eureka:
   register-with-eureka: false
