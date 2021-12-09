@@ -8,8 +8,7 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
-      httpclient:        connect-timeout: 7000
-        response-timeout: 7500
+     
       discovery:
         locator:
           enabled: true
