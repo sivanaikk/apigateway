@@ -8,7 +8,8 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
-   
+      httpclient:        connect-timeout: 2000
+        response-timeout: 5s
       discovery:
         locator:
           enabled: true
@@ -36,7 +37,7 @@ spring:
         - AuthFilter
       
       - id: user-management-service
-        uri: http://usermanagement:8084
+        uri: http://10.100.160.240:8084
         predicates:
         - Path=/user-management/**
         filters:
@@ -82,7 +83,10 @@ spring:
                         
         
 eureka:
+  register-with-eureka: false
+  fetch-registry: false
   serviceUrl:
+      
       defaultZone:http//service-registry:8762/eureka/
 
 app:
