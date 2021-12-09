@@ -8,9 +8,11 @@ spring:
     allow-bean-definition-overriding: true
   cloud:
     gateway:
-      httpclient:        connect-timeout: 5000
-        
-        response-timeout: 10s
+      httpclient:        connect-timeout: 1000
+        response-timeout: 7500
+        pool:          type: fixed
+          max-idle-time: 90s
+          max-life-time: 90s
       discovery:
         locator:
           enabled: true
@@ -83,12 +85,6 @@ spring:
         - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
                         
         
-eureka:
-  register-with-eureka: false
-  fetch-registry: false
- # serviceUrl:
-      
-   #   defaultZone:http//service-registry:8762/eureka/
 
 app:
  setWebEnvironment(false);
