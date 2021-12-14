@@ -62,7 +62,7 @@ spring:
         - AuthFilter
         
       - id: promo-exchange-service
-        uri: http://localhost:8087/
+        uri: http://localhost:8089/
         predicates:
         - Path=/promo-exchange/**
         filters:
@@ -78,6 +78,32 @@ spring:
         - RewritePath=/tax-master/(?<path>.*), /$\{path}
         - AuthFilter
         
+        
+      - id: catalog-service
+        uri: http://localhost:9091/
+        predicates:
+        - Path=/catalog-categories/**
+        filters:
+        - RewritePath=/catalog-categories/(?<path>.*), /$\{path}
+         - AuthFilter
+        
+      - id: inventory-service
+        uri: http://localhost:9092/
+        predicates:
+        - Path=/inventory/**
+        filters:
+        - RewritePath=/inventory/(?<path>.*), /$\{path}
+         - AuthFilter
+     
+     
+      - id: connection-pool-service
+        uri: http://localhost:9090/
+        predicates:
+        - Path=/connection-pool/**
+        filters:
+        - RewritePath=/connection-pool/(?<path>.*), /$\{path}
+      - AuthFilter
+        
        
       - id: openapi
         uri: http://localhost:${server.port}
@@ -85,7 +111,9 @@ spring:
         - Path=/v3/api-docs/**
         filters:
         - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
-                        
+        
+      
+          
         
 eureka:
   serviceUrl:
