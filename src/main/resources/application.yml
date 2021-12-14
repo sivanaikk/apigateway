@@ -18,7 +18,8 @@ spring:
         predicates:
         - Path=/new-sale/**
         filters:
-        - RewritePath=/new-sale/(?<path>.*), /$\{path} 
+        - RewritePath=/new-sale/(?<path>.*), /$\{path}
+        - AuthFilter
       
       - id: customer-management-service
         uri: http://localhost:8082
@@ -26,6 +27,7 @@ spring:
         - Path=/customer/**
         filters:
         - RewritePath=/customer/(?<path>.*), /$\{path}
+        - AuthFilter
         
       - id: hsn-details-service
         uri: http://localhost:8083
@@ -41,7 +43,7 @@ spring:
         - Path=/user-management/**
         filters:
         - RewritePath=/user-management/(?<path>.*), /$\{path}
-        
+        - AuthFilter
         
       - id: userStore-mappaing-service
         uri: http://localhost:8085/
@@ -49,6 +51,7 @@ spring:
         - Path=/user-store/**
         filters:
         - RewritePath=/user-store/(?<path>.*), /$\{path}
+        - AuthFilter
         
       - id: paymentgateway-service
         uri: http://localhost:8086/
@@ -56,6 +59,7 @@ spring:
         - Path=/paymentgateway/**
         filters:
         - RewritePath=/paymentgateway/(?<path>.*), /$\{path}
+        - AuthFilter
         
       - id: promo-exchange-service
         uri: http://localhost:8087/
@@ -63,6 +67,7 @@ spring:
         - Path=/promo-exchange/**
         filters:
         - RewritePath=/promo-exchange/(?<path>.*), /$\{path}
+        - AuthFilter
         
         
       - id: tax-master-service
@@ -71,6 +76,7 @@ spring:
         - Path=/tax-master/**
         filters:
         - RewritePath=/tax-master/(?<path>.*), /$\{path}
+        - AuthFilter
         
        
       - id: openapi
