@@ -21,7 +21,7 @@ public class RouteValidator {
             "/auth/authResponce"
             
     );	
-	
+	//
 	 public Predicate<ServerHttpRequest> isSecured =
 	            request -> nonSecureRoutes
 	                    .stream()

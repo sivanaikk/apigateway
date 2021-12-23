@@ -124,7 +124,7 @@ app:
 
 
 #####################properties related for aws cognito for authentication provider####################
-
+#
 Cognito:
      aws: 
         accesskey: AKIAYZOXA3O4HNGVWCQL

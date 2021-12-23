@@ -123,7 +123,8 @@ eureka:
 app:
  setWebEnvironment(false);
 
-
+#
+#
 #####################properties related for aws cognito for authentication provider####################
 
 Cognito:
