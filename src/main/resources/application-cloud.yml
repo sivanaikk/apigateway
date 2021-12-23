@@ -14,7 +14,7 @@ spring:
           enabled: true
       routes:
       - id: new-sale-service
-        uri: http://localhost:8081
+        uri: http://10.100.161.5:8081
         predicates:
         - Path=/new-sale/**
         filters:
@@ -22,7 +22,7 @@ spring:
         - AuthFilter
       
       - id: customer-management-service
-        uri: http://localhost:8082
+        uri: http://10.100.67.139:8082
         predicates:
         - Path=/customer/**
         filters:
@@ -30,7 +30,7 @@ spring:
         - AuthFilter
         
       - id: hsn-details-service
-        uri: http://localhost:8083
+        uri: http://10.100.177.121:8083
         predicates:
         - Path=/hsn-details/**
         filters:
@@ -38,7 +38,7 @@ spring:
         - AuthFilter
       
       - id: user-management-service
-        uri: http://usermanagement:8084
+        uri: http://10.100.160.240:8084
         predicates:
         - Path=/user-management/**
         filters:
@@ -46,7 +46,7 @@ spring:
         - AuthFilter
         
       - id: userStore-mappaing-service
-        uri: http://localhost:8085/
+        uri: http://10.100.74.36:8081/
         predicates:
         - Path=/user-store/**
         filters:
@@ -54,7 +54,7 @@ spring:
         - AuthFilter
         
       - id: paymentgateway-service
-        uri: http://localhost:8086/
+        uri: http://10.100.143.95:8086/
         predicates:
         - Path=/paymentgateway/**
         filters:
@@ -62,7 +62,7 @@ spring:
         - AuthFilter
         
       - id: promo-exchange-service
-        uri: http://localhost:8089/
+        uri: http://10.100.82.250:8088/
         predicates:
         - Path=/promo-exchange/**
         filters:
@@ -71,7 +71,7 @@ spring:
         
         
       - id: tax-master-service
-        uri: lb://tax-master-service
+        uri: http://10.100.178.125:8088/
         predicates:
         - Path=/tax-master/**
         filters:
@@ -80,7 +80,7 @@ spring:
         
         
       - id: catalog-service
-        uri: http://localhost:9091/
+        uri: http://10.100.195.69:8085/
         predicates:
         - Path=/catalog-categories/**
         filters:
@@ -88,7 +88,7 @@ spring:
          - AuthFilter
         
       - id: inventory-service
-        uri: http://localhost:9092/
+        uri: http://10.100.15.219:9092/
         predicates:
         - Path=/inventory/**
         filters:
@@ -97,7 +97,7 @@ spring:
      
      
       - id: connection-pool-service
-        uri: http://localhost:9090/
+        uri: http://10.100.181.193:8085/
         predicates:
         - Path=/connection-pool/**
         filters:
@@ -117,7 +117,7 @@ spring:
         
 eureka:
   serviceUrl:
-      defaultZone:http//service-registry:8762/eureka/
+      defaultZone:http//10.100.143.45:8762:8762/eureka/
 
 app:
  setWebEnvironment(false);

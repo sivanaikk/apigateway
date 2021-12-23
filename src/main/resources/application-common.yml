@@ -103,7 +103,8 @@ spring:
         filters:
         - RewritePath=/connection-pool/(?<path>.*), /$\{path}
       - AuthFilter
-        
+      
+     
        
       - id: openapi
         uri: http://localhost:${server.port}
