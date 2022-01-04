@@ -13,7 +13,7 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: new-sale-service
+      - id: new-sale-api 
         uri: http://10.100.161.5:8081
         predicates:
         - Path=/new-sale/**
@@ -21,7 +21,7 @@ spring:
         - RewritePath=/new-sale/(?<path>.*), /$\{path}
         - AuthFilter
       
-      - id: customer-management-service
+      - id: customer-management
         uri: http://10.100.67.139:8082
         predicates:
         - Path=/customer/**
@@ -29,7 +29,7 @@ spring:
         - RewritePath=/customer/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: hsn-details-service
+      - id: hsn-details 
         uri: http://10.100.177.121:8083
         predicates:
         - Path=/hsn-details/**
@@ -37,7 +37,7 @@ spring:
         - RewritePath=/hsn-details/(?<path>.*), /$\{path}
         - AuthFilter
       
-      - id: user-management-service
+      - id: usermanagement 
         uri: http://10.100.160.240:8084
         predicates:
         - Path=/user-management/**
@@ -45,7 +45,7 @@ spring:
         - RewritePath=/user-management/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: userStore-mappaing-service
+      - id: user-store-mapping 
         uri: http://10.100.74.36:8081/
         predicates:
         - Path=/user-store/**
@@ -53,7 +53,7 @@ spring:
         - RewritePath=/user-store/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: paymentgateway-service
+      - id: payment-gateway
         uri: http://10.100.143.95:8086/
         predicates:
         - Path=/paymentgateway/**
@@ -61,7 +61,7 @@ spring:
         - RewritePath=/paymentgateway/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: promo-exchange-service
+      - id: promo-exchange
         uri: http://10.100.82.250:8088/
         predicates:
         - Path=/promo-exchange/**
@@ -70,7 +70,7 @@ spring:
         - AuthFilter
         
         
-      - id: tax-master-service
+      - id: tax-master
         uri: http://10.100.178.125:8088/
         predicates:
         - Path=/tax-master/**
@@ -87,7 +87,7 @@ spring:
         - RewritePath=/catalog-categories/(?<path>.*), /$\{path}
          - AuthFilter
         
-      - id: inventory-service
+      - id: inventory-module
         uri: http://10.100.15.219:9092/
         predicates:
         - Path=/inventory/**
@@ -96,7 +96,7 @@ spring:
          - AuthFilter
      
      
-      - id: connection-pool-service
+      - id: connection-pool
         uri: http://10.100.181.193:8085/
         predicates:
         - Path=/connection-pool/**
