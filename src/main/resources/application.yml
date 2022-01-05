@@ -102,7 +102,7 @@ spring:
         - Path=/connection-pool/**
         filters:
         - RewritePath=/connection-pool/(?<path>.*), /$\{path}
-      - AuthFilter
+         - AuthFilter
         
        
       - id: openapi
