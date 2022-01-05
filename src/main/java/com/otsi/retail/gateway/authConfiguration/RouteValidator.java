@@ -11,13 +11,17 @@ import org.springframework.stereotype.Component;
 public class RouteValidator {
 
 	public static final List<String> nonSecureRoutes=Arrays.asList(
-            "/auth/login",
+			"/auth/loginWithTempPass",
             "/auth/signup",
             "/auth/confirmEmail",
-            "/v3/api-docs"
+            "/v3/api-docs",
+            "/client/createClient",
+            "auth/confirmforgetPassword",
+            "/auth/resetUserPassword/**",
+            "/auth/authResponce"
             
     );	
-	
+	//
 	 public Predicate<ServerHttpRequest> isSecured =
 	            request -> nonSecureRoutes
 	                    .stream()

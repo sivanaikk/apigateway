@@ -13,56 +13,56 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: new-sale-service
-        uri: http://localhost:8081
+      - id: new-sale-api 
+        uri: http://10.100.161.5:8081
         predicates:
         - Path=/new-sale/**
         filters:
         - RewritePath=/new-sale/(?<path>.*), /$\{path}
         - AuthFilter
       
-      - id: customer-management-service
-        uri: http://localhost:8082
+      - id: customer-management
+        uri: http://10.100.67.139:8082
         predicates:
         - Path=/customer/**
         filters:
         - RewritePath=/customer/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: hsn-details-service
-        uri: http://localhost:8083
+      - id: hsn-details 
+        uri: http://10.100.177.121:8083
         predicates:
         - Path=/hsn-details/**
         filters:
         - RewritePath=/hsn-details/(?<path>.*), /$\{path}
         - AuthFilter
       
-      - id: user-management-service
-        uri: http://usermanagement:8084
+      - id: usermanagement 
+        uri: http://10.100.160.240:8084
         predicates:
         - Path=/user-management/**
         filters:
         - RewritePath=/user-management/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: userStore-mappaing-service
-        uri: http://localhost:8085/
+      - id: user-store-mapping 
+        uri: http://10.100.74.36:8081/
         predicates:
         - Path=/user-store/**
         filters:
         - RewritePath=/user-store/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: paymentgateway-service
-        uri: http://localhost:8086/
+      - id: payment-gateway
+        uri: http://10.100.143.95:8086/
         predicates:
         - Path=/paymentgateway/**
         filters:
         - RewritePath=/paymentgateway/(?<path>.*), /$\{path}
         - AuthFilter
         
-      - id: promo-exchange-service
-        uri: http://localhost:8089/
+      - id: promo-exchange
+        uri: http://10.100.82.250:8088/
         predicates:
         - Path=/promo-exchange/**
         filters:
@@ -70,8 +70,8 @@ spring:
         - AuthFilter
         
         
-      - id: tax-master-service
-        uri: lb://tax-master-service
+      - id: tax-master
+        uri: http://10.100.178.125:8088/
         predicates:
         - Path=/tax-master/**
         filters:
@@ -80,15 +80,15 @@ spring:
         
         
       - id: catalog-service
-        uri: http://localhost:9091/
+        uri: http://10.100.195.69:8085/
         predicates:
         - Path=/catalog-categories/**
         filters:
         - RewritePath=/catalog-categories/(?<path>.*), /$\{path}
          - AuthFilter
         
-      - id: inventory-service
-        uri: http://localhost:9092/
+      - id: inventory-module
+        uri: http://10.100.15.219:9092/
         predicates:
         - Path=/inventory/**
         filters:
@@ -96,8 +96,8 @@ spring:
          - AuthFilter
      
      
-      - id: connection-pool-service
-        uri: http://localhost:9090/
+      - id: connection-pool
+        uri: http://10.100.181.193:8085/
         predicates:
         - Path=/connection-pool/**
         filters:
@@ -117,14 +117,14 @@ spring:
         
 eureka:
   serviceUrl:
-      defaultZone:http//service-registry:8762/eureka/
+      defaultZone:http//10.100.143.45:8762:8762/eureka/
 
 app:
  setWebEnvironment(false);
 
 
 #####################properties related for aws cognito for authentication provider####################
-#
+
 Cognito:
      aws: 
         accesskey: AKIAYZOXA3O4HNGVWCQL
@@ -142,3 +142,4 @@ logging:
                          FilterChainProxy : debug
     
 ###################################### End #################################################
+#
