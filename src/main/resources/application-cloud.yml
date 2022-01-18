@@ -38,7 +38,7 @@ spring:
         - AuthFilter
       
       - id: usermanagement 
-        uri: http://10.100.160.240:8084
+        uri: http://usermanagement:8084
         predicates:
         - Path=/user-management/**
         filters:
